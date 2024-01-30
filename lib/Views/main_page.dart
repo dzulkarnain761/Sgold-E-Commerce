@@ -25,6 +25,7 @@ class _MainPageState extends State<MainPage> {
            
            title: Center(child: Text('Main Page', style: TextStyle(fontFamily: 'Poppins'),)),
            bottom: const TabBar(
+            splashFactory: NoSplash.splashFactory,
              isScrollable: false,
              indicatorSize: TabBarIndicatorSize.tab,
              indicatorColor: TColors.secondary,

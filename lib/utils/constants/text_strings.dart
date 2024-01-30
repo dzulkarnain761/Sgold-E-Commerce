@@ -58,6 +58,19 @@ class TTexts {
   static const String yourAccountCreatedSubTitle = "Welcome to Your Ultimate Shopping Destination: Your Account is Created, Unleash the Joy of Seamless Online Shopping!";
 
 
+  //authenticattion error
+  static final RegExp emailValidatorRegExp =
+    RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  static String kEmailNullError = "Please Enter your email";
+  static String kInvalidEmailError = "Please Enter Valid Email";
+  static String kPassNullError = "Please Enter your password";
+  static String kShortPassError = "Password is too short";
+  static String kMatchPassError = "Passwords don't match";
+  static String kNamelNullError = "Please Enter your name";
+  static String kPhoneNumberNullError = "Please Enter your phone number";
+  static String kAddressNullError = "Please Enter your address";
+
+
   // -- Product
   static const String popularProducts = "Popular Products";
 

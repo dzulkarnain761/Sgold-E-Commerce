@@ -40,6 +40,7 @@ class _AllProductState extends State<AllProduct> {
 
     }
   }
+  
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -62,7 +63,13 @@ class _AllProductState extends State<AllProduct> {
               ],
             ),
           ),
-          isLoading ? CircularProgressIndicator() :
+          isLoading ? const SizedBox(
+                    height: 10.0,
+                    width: 50.0,
+                    child: Center(
+                      child: CircularProgressIndicator(color: TColors.secondary)
+                    ),
+                  ) :
            Expanded(
                 child: GridView.builder(
                   itemCount: products!.length,

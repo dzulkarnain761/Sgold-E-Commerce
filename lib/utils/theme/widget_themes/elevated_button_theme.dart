@@ -12,7 +12,7 @@ class TElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: TColors.light,
-      backgroundColor: TColors.primary,
+      backgroundColor: TColors.secondary,
       disabledForegroundColor: TColors.darkGrey,
       disabledBackgroundColor: TColors.buttonDisabled,
       side: const BorderSide(color: TColors.primary),
@@ -27,7 +27,7 @@ class TElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       elevation: 0,
       foregroundColor: TColors.light,
-      backgroundColor: TColors.primary,
+      backgroundColor: TColors.secondary,
       disabledForegroundColor: TColors.darkGrey,
       disabledBackgroundColor: TColors.darkerGrey,
       side: const BorderSide(color: TColors.primary),

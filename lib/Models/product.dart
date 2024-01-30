@@ -41,9 +41,8 @@ class ProductContainer extends StatelessWidget {
             padding: const EdgeInsets.only(left: 8),
             child: Text(
               name,
-              style: const TextStyle(
-                fontSize: 11.0,
-              ),
+              maxLines: 2,
+              style: Theme.of(context).textTheme.bodyMedium
             ),
           ),
 
@@ -72,7 +71,7 @@ class ProductContainer extends StatelessWidget {
                   child: const Center(
                       child: Text(
                     'Add to Cart',
-                    style: TextStyle(fontSize: 12),
+                    style: TextStyle(fontSize: 12,color: Colors.black),
                   )),
                 ),
               ),

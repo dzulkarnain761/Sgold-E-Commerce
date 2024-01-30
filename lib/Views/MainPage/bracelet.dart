@@ -42,18 +42,7 @@ class BraceletProducts extends StatelessWidget {
                   childAspectRatio: 0.85,
                   crossAxisCount: 2,
                   children: <Widget>[
-                    const ProductContainer(
-                        image: TImages.productImage4,
-                        name: 'Nikey',
-                        price: '20'),
-                    const ProductContainer(
-                        image: TImages.productImage4,
-                        name: 'Nikey',
-                        price: '20'),
-                    const ProductContainer(
-                        image: TImages.productImage4,
-                        name: 'Nikey',
-                        price: '20'),
+                    
                   ],
                 ),
               ),
