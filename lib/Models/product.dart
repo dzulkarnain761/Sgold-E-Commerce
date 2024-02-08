@@ -5,10 +5,10 @@ import 'package:sgold/utils/constants/colors.dart';
 class ProductContainer extends StatelessWidget {
   final String image;
   final String name;
-  final String price;
+  final String weight;
 
   const ProductContainer(
-      {required this.image, required this.name, required this.price});
+      {required this.image, required this.name, required this.weight});
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +26,7 @@ class ProductContainer extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
+          
           //Product Image
           Center(
             child: Image.network(
@@ -39,18 +40,15 @@ class ProductContainer extends StatelessWidget {
           //Title name
           Padding(
             padding: const EdgeInsets.only(left: 8),
-            child: Text(
-              name,
-              maxLines: 2,
-              style: Theme.of(context).textTheme.bodyMedium
-            ),
+            child: Text(name,
+                maxLines: 2, style: Theme.of(context).textTheme.bodyMedium),
           ),
 
           //Price/weight number
           Padding(
             padding: const EdgeInsets.only(left: 8),
             child: Text(
-              price,
+              weight,
               style: const TextStyle(
                 fontSize: 14.0,
                 color: Colors.green,
@@ -71,7 +69,7 @@ class ProductContainer extends StatelessWidget {
                   child: const Center(
                       child: Text(
                     'Add to Cart',
-                    style: TextStyle(fontSize: 12,color: Colors.black),
+                    style: TextStyle(fontSize: 12, color: Colors.black),
                   )),
                 ),
               ),

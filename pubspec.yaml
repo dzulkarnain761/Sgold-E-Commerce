@@ -1,5 +1,5 @@
 name: sgold
-description: A new Flutter project.
+description: E-Commerce App for Jewelry.
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -20,6 +20,7 @@ dependencies:
   url_launcher: ^6.1.12
   flutter_native_splash: ^2.3.1
   smooth_page_indicator: ^1.1.0
+  supabase_flutter: ^2.3.2
 
   # Icons
   iconsax: ^0.0.8
