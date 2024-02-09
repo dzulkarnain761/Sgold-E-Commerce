@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sgold/Views/MainPage/all_item.dart';
-import 'package:sgold/Models/product.dart';
+
 import 'package:sgold/Views/MainPage/bracelet.dart';
 import 'package:sgold/Views/MainPage/necklace.dart';
 import 'package:sgold/Views/MainPage/ring.dart';
@@ -45,9 +45,9 @@ class _MainPageState extends State<MainPage> {
            children: [
              // Add corresponding content for each tab
              AllProduct(),
-             RingProducts(),
-             NecklaceProducts(),
-             BraceletProducts(),
+             RingProduct(),
+             NecklaceProduct(),
+             BraceletProduct(),
            ],
          ),
        ),

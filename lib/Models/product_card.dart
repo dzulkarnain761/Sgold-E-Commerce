@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../models/Product.dart';
+
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
     Key? key,
-    this.width = 140,
-    this.aspectRetio = 1.02,
     required this.image,
     required this.name,
-    required this.price,
+    required this.weight,
     // required this.onPress,
   }) : super(key: key);
 
-  final double width, aspectRetio;
   final String image;
   final String name;
-  final String price;
+  final String weight;
   // final VoidCallback onPress;
 
   @override
   Widget build(BuildContext context) {
-    var isFavourite = false;
+    // var isFavourite = false;
     return SizedBox(
-      width: width,
+      width: 100,
+      height: 100,
       child: GestureDetector(
         // onTap: onPress,
         child: Column(
@@ -35,8 +33,11 @@ class ProductCard extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.network(
+                  width : 50,
+                  height : 10,
+                  scale : 2,
                   image,
-                  fit: BoxFit.fill,
+                  // fit: BoxFit.fitHeight,
                 ),
               ),
             ),
@@ -50,33 +51,14 @@ class ProductCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  "\$${price}",
+                  "${weight}g",
                   style: const TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: Colors.green,
                   ),
                 ),
-                InkWell(
-                  borderRadius: BorderRadius.circular(50),
-                  onTap: () {},
-                  child: Container(
-                    padding: const EdgeInsets.all(6),
-                    height: 24,
-                    width: 24,
-                    decoration: BoxDecoration(
-                      color: isFavourite ? Colors.red.shade300 : Colors.grey,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      Iconsax.heart,
-                      size: 15,
-                      color: isFavourite
-                          ? const Color(0xFFFF4848)
-                          : const Color(0xFFDBDEE4),
-                    ),
-                  ),
-                ),
+                
               ],
             )
           ],

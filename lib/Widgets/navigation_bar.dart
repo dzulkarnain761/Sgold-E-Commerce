@@ -39,10 +39,10 @@ class Navbar extends StatelessWidget {
                 controller.selectedIndex.value = index,
             destinations: const [
               NavigationDestination(icon: Icon(Iconsax.home), label: "Home",selectedIcon: Icon(Iconsax.home, color: Colors.black),),
-              NavigationDestination(
-                  icon: Icon(Iconsax.shopping_cart), label: "Cart",selectedIcon: Icon(Iconsax.shopping_cart, color: Colors.black),),
-              NavigationDestination(
-                  icon: Icon(Iconsax.heart), label: "Wishlist",selectedIcon: Icon(Iconsax.heart, color: Colors.black),),
+              // NavigationDestination(
+              //     icon: Icon(Iconsax.shopping_cart), label: "Cart",selectedIcon: Icon(Iconsax.shopping_cart, color: Colors.black),),
+              // NavigationDestination(
+              //     icon: Icon(Iconsax.heart), label: "Wishlist",selectedIcon: Icon(Iconsax.heart, color: Colors.black),),
               NavigationDestination(icon: Icon(Iconsax.user), label: "Profile",selectedIcon: Icon(Iconsax.user, color: Colors.black),),
             ]),
       ),
@@ -56,10 +56,10 @@ class NavigationController extends GetxController {
 
   final screens = [
     const MainPage(),
-    const CartScreen(),
-    Container(
-      color: Colors.yellow,
-    ),
+    // const CartScreen(),
+    // Container(
+    //   color: Colors.yellow,
+    // ),
     const ProfileScreen(),
   ];
 }

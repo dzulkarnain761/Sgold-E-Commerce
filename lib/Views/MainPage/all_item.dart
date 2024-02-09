@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sgold/Models/product.dart';
-import 'package:sgold/Models/product_card.dart';
-import 'package:sgold/Services/product_fromAPI.dart';
-import 'package:sgold/utils/constants/image_strings.dart';
-import 'package:sgold/utils/helpers/helper_functions.dart';
 import 'package:sgold/Services/supabase.dart';
+import 'package:sgold/utils/constants/colors.dart';
 
 class AllProduct extends StatefulWidget {
   const AllProduct({Key? key}) : super(key: key);
@@ -26,11 +22,10 @@ class _AllProductState extends State<AllProduct> {
 
   Future<List<Map<String, dynamic>>> _fetchProductData() async {
     try {
-      return await DatabaseService().readData();
+      return await DatabaseService().fetchAllProducts();
     } catch (error) {
-      // Handle error appropriately
       print('Error fetching product data: $error');
-      throw error;
+      rethrow;
     }
   }
 
@@ -59,11 +54,12 @@ class _AllProductState extends State<AllProduct> {
                     }
                   },
                 ),
-                GestureDetector(
-                  child: const Row(
-                    children: [Icon(Iconsax.sort), Text('Sort By')],
-                  ),
-                )
+                // GestureDetector(
+                //   onTap: ,
+                //   child: const Row(
+                //     children: [Icon(Iconsax.sort), Text('Sort By')],
+                //   ),
+                // )
               ],
             ),
           ),
@@ -73,7 +69,9 @@ class _AllProductState extends State<AllProduct> {
               future: productData,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const Center(
+                      child:
+                          CircularProgressIndicator(color: TColors.secondary));
                 } else if (snapshot.hasError) {
                   return Center(
                     child: Text('Error: ${snapshot.error}'),
@@ -83,16 +81,48 @@ class _AllProductState extends State<AllProduct> {
                 } else {
                   final products = snapshot.data!;
                   return GridView.builder(
+                    padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                     itemCount: products.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,childAspectRatio: 0.85),
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.9,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                    ),
                     itemBuilder: (context, index) {
                       final productList = products[index];
-                      return ProductContainer(
-                          image: productList['image'],
-                          name: productList['title'],
-                          weight: '${productList['weight']}g');
+                      return GestureDetector(
+                        child: Container(
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                AspectRatio(
+                                    aspectRatio: 1.3,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(
+                                        productList['image'],
+                                        loadingBuilder:
+                                            (context, child, progress) {
+                                          return progress == null
+                                              ? child
+                                              : LinearProgressIndicator(color: Colors.grey,backgroundColor: Colors.grey.shade400,);
+                                        },
+                                        fit: BoxFit.cover,
+                                      ),
+                                    )),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                Text(productList['title']),
+                                Text(
+                                  '${productList['weight'].toString()} g',
+                                  style: const TextStyle(color: Colors.green),
+                                ),
+                              ]),
+                        ),
+                      );
                     },
                   );
                 }
@@ -105,6 +135,10 @@ class _AllProductState extends State<AllProduct> {
   }
 }
 
+// return ProductCard(
+//                           image: productList['image'],
+//                           name: productList['title'],
+//                           weight: productList['weight'].toString());
 
 
 // isLoading ? const SizedBox(

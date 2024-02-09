@@ -27,21 +27,22 @@ class ProfileScreen extends StatelessWidget {
           ProfileMenu(
             text: "My Account",
             icon: Iconsax.user,
-            press: () => Get.toNamed(SignInScreen.routeName),
+            press: () => Get.to(() => const SignInScreen()),
           ),
-          ProfileMenu(
-            text: "Address",
-            icon: Iconsax.location,
-            press: () {},
-          ),
+          
           ProfileMenu(
             text: "Settings",
             icon: Iconsax.setting,
             press: () {},
           ),
           ProfileMenu(
-            text: "Log Out",
-            icon: Iconsax.logout,
+            text: "Location",
+            icon: Iconsax.location,
+            press: () {},
+          ),
+          ProfileMenu(
+            text: "Contact Us",
+            icon: Iconsax.call,
             press: () {},
           ),
         ],
