@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sgold/Account/sign_in/sign_in_form.dart';
-import 'package:sgold/components/no_account_text.dart';
-import 'package:sgold/components/socal_cart.dart';
+import 'package:sgold/Account/components/no_account_text.dart';
+import 'package:sgold/Account/components/socal_cart.dart';
+import 'package:sgold/Views/Profile/dark_mode_controller.dart';
+import 'package:sgold/utils/helpers/helper_functions.dart';
 
 
 
 class SignInScreen extends StatelessWidget {
-  static String routeName = "/sign_in";
+  
 
   const SignInScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sign In"),
+        iconTheme: IconThemeData(
+          color: dark ? Colors.white : Colors.black, // Set your desired color here
+        ),
+        
       ),
       body: SafeArea(
         child: SizedBox(
@@ -27,7 +35,6 @@ class SignInScreen extends StatelessWidget {
                   const Text(
                     "Welcome Back",
                     style: TextStyle(
-                      color: Colors.black,
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                     ),

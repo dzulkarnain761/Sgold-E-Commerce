@@ -1,7 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:sgold/Services/supabase.dart';
+import 'package:sgold/Views/MainPage/productDetails.dart';
 import 'package:sgold/utils/constants/colors.dart';
+import 'package:shimmer/shimmer.dart';
 
 class BraceletProduct extends StatefulWidget {
   const BraceletProduct({Key? key}) : super(key: key);
@@ -11,7 +15,6 @@ class BraceletProduct extends StatefulWidget {
 }
 
 class _BraceletProductState extends State<BraceletProduct> {
-  
   late Future<List<Map<String, dynamic>>> productData;
   bool isLoading = true;
 
@@ -70,7 +73,9 @@ class _BraceletProductState extends State<BraceletProduct> {
               future: productData,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const Center(child: CircularProgressIndicator(color: TColors.secondary));
+                  return const Center(
+                      child:
+                          CircularProgressIndicator(color: TColors.secondary));
                 } else if (snapshot.hasError) {
                   return Center(
                     child: Text('Error: ${snapshot.error}'),
@@ -92,33 +97,47 @@ class _BraceletProductState extends State<BraceletProduct> {
                     itemBuilder: (context, index) {
                       final productList = products[index];
                       return GestureDetector(
-                        child: Container(
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AspectRatio(
-                                    aspectRatio: 1.3,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.network(
-                                        productList['image'],
-                                        loadingBuilder:
-                                            (context, child, progress) {
-                                          return progress == null
-                                              ? child
-                                              : LinearProgressIndicator(color: Colors.grey,backgroundColor: Colors.grey.shade400,);
-                                        },
-                                        fit: BoxFit.cover,
+                        onTap: () => Get.to(() => ProductDetails(
+                              image: productList['image'],
+                              title: productList['title'],
+                              weight: productList['weight'].toString(),
+                            )),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AspectRatio(
+                                aspectRatio: 1.3,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.cover,
+                                    imageUrl: productList['image'],
+                                    placeholder: (context, url) => AspectRatio(
+                                      aspectRatio: 1.3,
+                                      child: Shimmer.fromColors(
+                                        baseColor: Colors.grey.shade300,
+                                        highlightColor: Colors.grey.shade100,
+                                        enabled: true,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
                                       ),
-                                    )),
-                                    SizedBox(height: 6,),
-                                Text(productList['title']),
-                                Text(
-                                  '${productList['weight'].toString()} g',
-                                  style: const TextStyle(color: Colors.green),
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
                                 ),
-                              ]),
-                        ),
+                              ),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Text(productList['title']),
+                              Text(
+                                '${productList['weight'].toString()} g',
+                                style: const TextStyle(color: Colors.green),
+                              ),
+                            ]),
                       );
                     },
                   );
@@ -131,6 +150,3 @@ class _BraceletProductState extends State<BraceletProduct> {
     );
   }
 }
-
-
-

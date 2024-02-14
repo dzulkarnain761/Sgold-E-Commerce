@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sgold/Account/forgot_password/forgot_password_screen.dart';
 import 'package:sgold/Account/login_sucess/login_sucess_screen.dart';
-import 'package:sgold/components/form_error.dart';
+import 'package:sgold/Account/components/form_error.dart';
 import 'package:sgold/utils/constants/colors.dart';
 import 'package:sgold/utils/constants/text_strings.dart';
 import 'package:sgold/utils/device/device_utility.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sgold/Account/sign_up/sign_up_form.dart';
-import 'package:sgold/components/socal_cart.dart';
+import 'package:sgold/Account/components/socal_cart.dart';
 
 
 

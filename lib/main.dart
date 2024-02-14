@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:sgold/Widgets/navigation_bar.dart';
 import 'package:sgold/app.dart';

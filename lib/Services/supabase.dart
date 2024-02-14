@@ -1,5 +1,3 @@
-import 'package:sgold/Views/MainPage/ring.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:sgold/main.dart';
 
 class DatabaseService {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:sgold/components/no_account_text.dart';
+import 'package:sgold/Account/components/no_account_text.dart';
 import 'package:sgold/utils/constants/text_strings.dart';
 
 class ForgotPassForm extends StatefulWidget {

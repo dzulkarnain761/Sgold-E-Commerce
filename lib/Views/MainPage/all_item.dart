@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:get/get.dart';
 import 'package:sgold/Services/supabase.dart';
+import 'package:sgold/Views/MainPage/productDetails.dart';
 import 'package:sgold/utils/constants/colors.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:shimmer/shimmer.dart';
 
 class AllProduct extends StatefulWidget {
   const AllProduct({Key? key}) : super(key: key);
@@ -93,35 +96,47 @@ class _AllProductState extends State<AllProduct> {
                     itemBuilder: (context, index) {
                       final productList = products[index];
                       return GestureDetector(
-                        child: Container(
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                AspectRatio(
-                                    aspectRatio: 1.3,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: Image.network(
-                                        productList['image'],
-                                        loadingBuilder:
-                                            (context, child, progress) {
-                                          return progress == null
-                                              ? child
-                                              : LinearProgressIndicator(color: Colors.grey,backgroundColor: Colors.grey.shade400,);
-                                        },
-                                        fit: BoxFit.cover,
+                        onTap: () => Get.to(() => ProductDetails(
+                              image: productList['image'],
+                              title: productList['title'],
+                              weight: productList['weight'].toString(),
+                            )),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              AspectRatio(
+                                aspectRatio: 1.3,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: CachedNetworkImage(
+                                    fit: BoxFit.cover,
+                                    imageUrl: productList['image'],
+                                    placeholder: (context, url) => AspectRatio(
+                                      aspectRatio: 1.3,
+                                      child: Shimmer.fromColors(
+                                        baseColor: Colors.grey.shade300,
+                                        highlightColor: Colors.grey.shade100,
+                                        enabled: true,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
                                       ),
-                                    )),
-                                const SizedBox(
-                                  height: 6,
+                                    ),
+                                    errorWidget: (context, url, error) =>
+                                        Icon(Icons.error),
+                                  ),
                                 ),
-                                Text(productList['title']),
-                                Text(
-                                  '${productList['weight'].toString()} g',
-                                  style: const TextStyle(color: Colors.green),
-                                ),
-                              ]),
-                        ),
+                              ),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Text(productList['title']),
+                              Text(
+                                '${productList['weight'].toString()} g',
+                                style: const TextStyle(color: Colors.green),
+                              ),
+                            ]),
                       );
                     },
                   );
@@ -134,36 +149,3 @@ class _AllProductState extends State<AllProduct> {
     );
   }
 }
-
-// return ProductCard(
-//                           image: productList['image'],
-//                           name: productList['title'],
-//                           weight: productList['weight'].toString());
-
-
-// isLoading ? const SizedBox(
-//                     height: 10.0,
-//                     width: 50.0,
-//                     child: Center(
-//                       child: CircularProgressIndicator(color: TColors.secondary)
-//                     ),
-//                   ) :
-//            Expanded(
-//                 child: GridView.builder(
-//                   itemCount: products!.length,
-//                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//                     crossAxisCount: 2,
-//                     mainAxisSpacing: 0,
-//                     crossAxisSpacing: 0,
-//                     mainAxisExtent: 240,
-//                     // childAspectRatio: 1,
-//                   ),
-//                   itemBuilder: (_, index) => ProductContainer(
-//                     image: products![index].image,
-//                     name: products![index].title,
-//                     price: products![index].price.toString(),
-//                   ),
-//                 ),
-//               ),
-
-

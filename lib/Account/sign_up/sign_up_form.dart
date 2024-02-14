@@ -136,7 +136,7 @@ class _SignUpFormState extends State<SignUpForm> {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
                 // if all are valid then go to success screen
-                Navigator.pushNamed(context, SignInScreen.routeName);
+                // Navigator.pushNamed(context, SignInScreen.routeName);
               }
             },
             child: const Text("Continue"),

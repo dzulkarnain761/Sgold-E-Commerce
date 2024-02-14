@@ -3,7 +3,7 @@
     <application
         android:label="sgold"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -30,5 +30,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+            <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCC1tDexq9F1pWB0nHHgVX-m41G58y8rc8"/>
+
     </application>
 </manifest>

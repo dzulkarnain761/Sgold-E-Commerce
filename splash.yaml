@@ -1,13 +1,13 @@
 flutter_native_splash:
   color: "#FFFFFF"
   color_dark: "#000000"
-  image: assets/logos/SGold-Splash-for-light-mode.png
-  image_dark: assets/logos/SGold-Splash-for-black-mode.png
+  image: assets/logos/splash-logo-lightmode.png
+  image_dark: assets/logos/splash-logo-darkmode.png
 
   android_12:
     color: "#FFFFFF"
     color_dark: "#000000"
-    image: assets/logos/SGold-Splash-for-light-mode.png
-    image_dark: assets/logos/SGold-Splash-for-black-mode.png
+    image: assets/logos/splash-logo-lightmode.png
+    image_dark: assets/logos/splash-logo-darkmode.png
 
   web: false
